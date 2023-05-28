@@ -34,21 +34,19 @@ const fetchWeather = async (city) => {
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    console.log(result);
-	
+    console.log(typeof result);
+
 	//Parsing result to object which was string earlier
 	let weatherObj = JSON.parse(result)
 	console.log(weatherObj) //displaying object
 	//customizing display of weather
-	temperature.innerHTML = `Temperature: ${weatherObj.temp}`
-	windSpeed.innerHTML = `Wind Speed: ${weatherObj.wind_speed}`
-	humidity.innerHTML = `Humidity: ${weatherObj.humidity}`
-	feelsLike.innerHTML = `Feels Like: ${weatherObj.feels_like}`
+	temperature.innerHTML = `Temperature: ${weatherObj.temp} &deg; C`
+	windSpeed.innerHTML = `Wind Speed: ${weatherObj.wind_speed} km/h`
+	humidity.innerHTML = `Humidity: ${weatherObj.humidity} %`
+	feelsLike.innerHTML = `Feels Like: ${weatherObj.feels_like} &deg; C`
   } catch (error) {
 	alert('error')
   }
 };
 
 getCity()
-
-
